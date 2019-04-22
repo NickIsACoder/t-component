@@ -13,7 +13,7 @@
                     <i class="iconfont icon-right-fill t-tree-children-item-arrow-expand"
                        v-if="showArrow"></i>
                     <i class="ball-clip-rotate"
-                       v-if="'loading' in data && data.loading"></i>
+                       v-if="'loading' in data && data.loading && !data.disabled"></i>
                 </span>
                 <t-checkbox v-if="showCheck"
                             v-model="data.checked"
@@ -118,6 +118,11 @@ export default {
       return data[this.displayMethod];
     },
     handleExpand() {
+      //禁用状态禁止异步加载
+      if( this.data.disabled ){
+         return false;
+      }
+
       if (!this.data[this.props.children]) {
         // 异步加载数据
         if (this.data.loading !== undefined && !this.data[this.props.children]) {

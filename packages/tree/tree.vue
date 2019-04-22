@@ -120,7 +120,15 @@ export default {
         }
 
         if (data[childrenKey]) {
-          data[childrenKey].forEach(child => flattenChildren(child, data));
+          data[childrenKey].forEach(child => {
+            //anyState为true的时候,子可以选中,另外一种是为false,子不可选中
+            if(!that.anyState){
+              if( data.disabled && data.disabled==true ){
+                that.$set(child, 'disabled', true);
+              }
+            }
+            flattenChildren(child, data);
+          });
         }
       };
       this.data.forEach(rootNode => flattenChildren(rootNode));
@@ -158,20 +166,6 @@ export default {
         return node;
       });
     },
-    //获取禁用状态的key
-    // getDisaledKeys(){
-    //   return this.treeData.filter(obj => obj.node.disabled).map((obj) => {
-    //     let node = '';
-    //     const label = this.props.label;
-    //     Object.entries(obj.node).forEach((x) => {
-    //       if (!['checked', 'halfCheck', 'nodeKey', 'visible', label].includes(x[0])) {
-    //         node = x[1];
-    //       }
-    //     });
-    //     console.log(node)
-    //     return node;
-    //   });
-    // },
     // 获取选中状态的key
     getCheckedKeys() {
       return this.treeData.filter(obj => obj.node.checked).map((obj) => {
@@ -212,7 +206,6 @@ export default {
       this.treeData.filter(x => keys.includes(x.node[value]))
         .forEach((obj) => {
           this.$set(obj.node, 'disabled', true);
-          //this.resetChecked(obj.node);
         });
     },
     // 选中节点
@@ -223,7 +216,7 @@ export default {
       // 设置节点的checked和halfCheck
       this.$set(node, 'halfCheck', value === 'half');
       this.$set(node, 'checked', value === true);
-     if (this.anyState) return;
+      //if (this.anyState) return;
       if (node[childrenKey]) {
         // 获取子节点的状态，根据子节点的状态更新当前节点的状态
         const { selectAll, withoutDisabled } = this.getChildStatus(node[childrenKey]);
