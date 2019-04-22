@@ -1,0 +1,134 @@
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import { Cascader } from '../../../packages/index';
+import myMixin from '../../../packages/utils/dimissMixin';
+
+
+describe('Cascader', () => {
+  let wrapper;
+  const CascaderData = () => [
+    {
+      value: 'gd',
+      label: '广东省',
+      children: [
+        {
+          value: 'gz',
+          label: '广州市',
+          children: [
+            {
+              value: 'th',
+              label: '天河区',
+              children: [
+                {
+                  value: '01',
+                  label: '林和路',
+                  children: [
+                    {
+                      value: '011',
+                      label: '林和街道1',
+                    },
+                    {
+                      value: '012',
+                      label: '林和街道2',
+                    },
+                  ],
+                },
+                {
+                  value: '02',
+                  label: '体育西路',
+                },
+                {
+                  value: '04',
+                  label: '华师',
+                },
+                {
+                  value: '05',
+                  label: '天河北路',
+                },
+              ],
+            },
+            {
+              value: 'yx',
+              label: '越秀区',
+            },
+            {
+              value: 'lw',
+              label: '荔湾区',
+            },
+            {
+              value: 'py',
+              label: '番禺区',
+            },
+          ],
+        },
+        {
+          value: 'cz',
+          label: '潮州市',
+          loading: false,
+        },
+        {
+          value: 'sz',
+          label: '深圳市',
+          loading: false,
+        },
+      ],
+    },
+    {
+      value: 'fj',
+      label: '福建省',
+      children: [
+        {
+          value: 'fz',
+          label: '福州市',
+        },
+        {
+          value: 'xm',
+          label: '厦门市',
+        },
+      ],
+    },
+  ];
+  beforeEach(() => {
+    const localVue = createLocalVue();
+    localVue.mixin(myMixin);
+    wrapper = shallowMount(Cascader, {
+      propsData: {
+        options: CascaderData(),
+      },
+      localVue,
+    });
+  });
+  it('Cascader正确渲染', () => {
+    wrapper.setProps({
+      placeholder: '请选择省市区街道',
+    });
+    // 断言:input正常渲染
+    expect(wrapper.find('.t-cascader').exists()).to.be.equal(true);
+  });
+  // it('点击弹出显示,点击其他位置关闭', (done) => {
+  //   wrapper.setProps({ options: [{ value: 'gd', label: '广东省' }] });
+  //   setTimeout(() => {
+  //     // expect(wrapper.vm.options).to.be.equal();
+  //     expect(wrapper.props().options).to.equal([{ value: 'gd', label: '广东省' }]);
+  //     // expect(wrapper.vm.options.length).to.equal(1);
+  //     done();
+  //   }, 100);
+
+  // expect(wrapper.find('.icon-down-line').isVisible()).to.equal(true);
+  // wrapper.find('.t-cascader-header').trigger('click');
+  // expect(wrapper.find('.t-cascader-dropdown').isVisible()).to.equal(true);
+  // wrapper.trigger('click');
+  // expect(wrapper.find('.t-cascader-dropdown').isVisible()).to.equal(false);
+  // });
+  // it('当input有值时,点击删除按钮,清空input', () => {
+  //   wrapper.setProps({ value: { value: 'gd', label: '广东省' } });
+  //   expect(wrapper.find('.icon-error').isVisible()).to.equal(true);
+  //   wrapper.find('.icon-error').trigger('click');
+  //   expect(wrapper.find('.t-cascader-value').text()).to.equal('');
+  // });
+  // it('测试', () => {
+  //   wrapper.setProps({ value: { value: 'gd', label: '广东省' } });
+  //   expect(wrapper.find('.icon-error').isVisible()).to.equal(true);
+  //   wrapper.find('.icon-error').trigger('click');
+  //   expect(wrapper.find('.t-cascader-value').text()).to.equal('');
+  // });
+});
