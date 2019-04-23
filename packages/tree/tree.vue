@@ -49,7 +49,7 @@ export default {
     // 禁用多选框的数据集
     disabledKeys: {
       type: Array,
-      default: () => ['001'],
+      default: () => [],
     },
     // 异步加载数据
     loadData: Function,
