@@ -3,7 +3,7 @@
         <ul class="t-tree-children" v-show="data.visible">
             <li class="t-tree-children-item" @click.stop="handleSelect">
                 <div class="t-tree-children-item-content"
-                     :class="{'is-select': isSelect === data.nodeKey}">
+                     :class="{'is-select': isSelect === data.nodeKey,'is-disabled':data.disabled}">
                 <span :class="[
                 't-tree-children-item-arrow',
                 {'t-tree-children-item-arrow-open':
@@ -31,6 +31,7 @@
                 </div>
                 <!-- v-if="showArrow" -->
                 <t-tree-item v-show="expand"
+                             v-if="showArrow"
                              :isSelect="isSelect"
                              v-for="(item, ind) in data[props.children]"
                              :key="ind"
@@ -118,11 +119,6 @@ export default {
       return data[this.displayMethod];
     },
     handleExpand() {
-      //禁用状态禁止异步加载
-      if( this.data.disabled ){
-         return false;
-      }
-
       if (!this.data[this.props.children]) {
         // 异步加载数据
         if (this.data.loading !== undefined && !this.data[this.props.children]) {
@@ -135,6 +131,7 @@ export default {
               name = tree.$options.name;
             }
           }
+          if (this.data.disabled) return;
           // 找到名为t-tree的父组件，并且父组件上有loadData方法
           if (tree && tree.loadData) {
             // 设置loading图标的显示
@@ -183,6 +180,9 @@ ul, li {
             cursor: pointer;
             background-color: #e7f0ff;
          }
+        & .is-disabled{
+          cursor: not-allowed;
+        }
         &-text {
           vertical-align: middle;
         }

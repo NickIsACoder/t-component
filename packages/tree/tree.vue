@@ -39,7 +39,7 @@ export default {
     // 是否显示多选框
     showCheck: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     // 是否默认展开全部数据
     defaultExpandAll: {
@@ -49,7 +49,7 @@ export default {
     // 禁用多选框的数据集
     disabledKeys: {
       type: Array,
-      default: () => [],
+      default: () => ['001'],
     },
     // 异步加载数据
     loadData: Function,
@@ -120,12 +120,10 @@ export default {
         }
 
         if (data[childrenKey]) {
-          data[childrenKey].forEach(child => {
-            //anyState为true的时候,子可以选中,另外一种是为false,子不可选中
-            if(!that.anyState){
-              if( data.disabled && data.disabled==true ){
-                that.$set(child, 'disabled', true);
-              }
+          data[childrenKey].forEach((child) => {
+            // anyState为true的时候,子可以选中,另外一种是为false,子不可选中
+            if (!that.anyState && data.disabled) {
+              that.$set(child, 'disabled', true);
             }
             flattenChildren(child, data);
           });
@@ -216,7 +214,7 @@ export default {
       // 设置节点的checked和halfCheck
       this.$set(node, 'halfCheck', value === 'half');
       this.$set(node, 'checked', value === true);
-      //if (this.anyState) return;
+      // if (this.anyState) return;
       if (node[childrenKey]) {
         // 获取子节点的状态，根据子节点的状态更新当前节点的状态
         const { selectAll, withoutDisabled } = this.getChildStatus(node[childrenKey]);
@@ -246,6 +244,8 @@ export default {
       // 当有父节点时，更新父节点状态
       const parent = this.treeData[node.nodeKey].parent;
       if (!parent && parent !== 0) return;
+      // 当父节点被禁用时，父节点状态不更新
+      if (this.treeData[parent].node.disabled) return;
       if (!resetCheck) {
         this.resetChecked(this.treeData[parent].node);
       }

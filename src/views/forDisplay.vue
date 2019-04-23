@@ -4,9 +4,9 @@
     <h2 class="main-title">pc组件展示页面</h2>
   </div>
   <backtop></backtop>
-  <div class="display-item">
+  <!-- <div class="display-item">
     <h3 class="sub-title"># button / 按钮</h3>
-    <!-- <div>
+    <div>
       <t-button size="small">small</t-button>
       <t-button>默认</t-button>
       <t-button size="large">large</t-button>
@@ -30,9 +30,9 @@
                 shape="ellipse">primary</t-button>
       <t-button icon="icon-ios-search"
                 shape="circle"></t-button>
-    </div> -->
+    </div>
   </div>
-  <!-- <div class="display-item">
+  <div class="display-item">
     <h3 class="sub-title"># badge / 角标</h3>
     <div>
       <Badge class="mg-left"><t-button>评论</t-button></Badge>
@@ -40,16 +40,16 @@
       <Badge class="mg-left" type="text" content="99+"><span>全新发布</span></Badge>
       <Badge class="mg-left" type="text" color="orange" content="hot">其他颜色的</Badge>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># cascader / 级联选择器</h3>
     <div>
       <Cascader style="width: 300px;"
                 v-model="cascader.casValue"
                 :options="cascader.casOptions"></Cascader>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># checkbox & checkbox-group / 多选框 & 多选框组</h3>
     <div>
       <t-checkbox :value="selectAll"
@@ -61,16 +61,16 @@
                     :value="ck"></t-checkbox>
       </t-checkbox-group>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># datepicker / 日期选择器</h3>
     <div>
         <datepicker v-model="date" type="date"></datepicker>
         <datepicker v-model="month" type="month"></datepicker>
         <datepicker v-model="year" type="year"></datepicker>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># input / 输入框</h3>
     <div>
       <t-input type="text" placeholder="请输入"  clearable size="large"></t-input>
@@ -98,15 +98,15 @@
         <i class="iconfont icon-add" slot="rightIcon"></i>
       </t-input>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># loading / 加载提示</h3>
     <div>
       <t-button @click="openLoading(2)">点击加载</t-button>
       <t-button class="mg-left" @click="openLoading(4)" type="success">点击加载</t-button>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># menu / 菜单</h3>
     <div>
       <div style="width: 600px;">
@@ -145,16 +145,16 @@
         </Menu>
       </div>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># messagebox / 对话框</h3>
     <div>
       <t-button @click="openMessageBox(2)">点击显示对话框</t-button>
       <t-button class="mg-left" @click="openMessageBox(4)" type="success">点击显示对话框</t-button>
       <t-button class="mg-left" @click="openMessageBox(3)" type="danger">点击显示对话框</t-button>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># modal / 模态框</h3>
     <div>
       <t-button @click="showModal = true">点击显示模态框</t-button>
@@ -183,8 +183,8 @@
       </t-modal>
 
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># notification / 通知提示</h3>
     <div>
       <t-button @click="mynotify(1)">点击显示通知</t-button>
@@ -192,8 +192,8 @@
       <t-button class="mg-left" @click="mynotify(3)" type="warnning">点击显示通知</t-button>
       <t-button class="mg-left" @click="mynotify(4)" type="text">点击显示通知</t-button>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># pagination / 分页导航</h3>
     <div>
       <Pagination :total="page.total"
@@ -201,8 +201,8 @@
                   :showPageSize="true"
                   :currentPage.sync="page.currentPage"></Pagination>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># progress / 进度条</h3>
     <div>
       <t-progress :percent="progress.percent"></t-progress>
@@ -213,16 +213,16 @@
       <t-progress type="circle" :color="progress.progressColor"
                   :percent="progress.percent"></t-progress>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># radio / 单选框</h3>
     <div>
       <t-radio v-model="radioValue" value="2" ></t-radio>
       <t-radio class="mg-left" v-model="radioValue" value="3" :disable="true" ></t-radio>
       <t-radio class="mg-left" v-model="radioValue" value="1" ></t-radio>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># select / 选择框</h3>
     <div>
       <t-select style="width: 300px;"
@@ -234,8 +234,8 @@
                 :options="option"
                 multiple></t-select>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># steps / 步骤条</h3>
     <div>
       <div style="width: 800px;">
@@ -256,8 +256,8 @@
       </div>
       <t-button type="primary" @click="stepCount++">下一步</t-button>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># switch / 开关</h3>
     <div>
       <t-switch size="large" type="primary" :value="true"></t-switch>
@@ -266,8 +266,8 @@
       <t-switch class="mg-left" size="large" type="success" :value="true"></t-switch>
       <t-switch class="mg-left" size="large" type="info" :value="true"></t-switch>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># table / 表格</h3>
     <div>
       <Table :source="tableData"
@@ -289,22 +289,22 @@
       </Table>
 
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># timepicker / 时间选择器</h3>
     <div>
       <Timepicker v-model="time" :isPeriod="false" />
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># tooltip / 气泡提示框</h3>
     <div>
       <t-button type="primary" @click="$tooltip($event, '这是一条提示信息')">点击显示信息</t-button>
       <t-input class="mg-left" type="text" @focus="$tooltip($event, '用户名为字母或数字')"
                placeholder="请输入用户名" icon="icon-account"></t-input>
     </div>
-  </div> -->
-  <!-- <div class="display-item">
+  </div>
+  <div class="display-item">
     <h3 class="sub-title"># transfer / 穿梭框</h3>
     <div>
       <transfer :source="mockData"
@@ -315,7 +315,7 @@
   <div class="display-item">
     <h3 class="sub-title"># tree / 树选择器</h3>
     <div>
-      <tree :data="treeData" :anyState="true" :defaultExpandAll="false"></tree>
+      <tree :data="treeData" :anyState="true" :loadData="loadData"></tree>
     </div>
   </div>
   <div class="display-item">
@@ -492,11 +492,10 @@ export default {
           children: [
             { value: '0001', label: '资源管理' },
             { value: '0002', label: '角色管理' },
-            { value: '0003', label: '用户管理',disabled: true },
+            { value: '0003', label: '用户管理' },
             {
               value: '0004',
               label: '权限管理',
-              loading: true,
               children: [
                 {
                   value: '00041',
@@ -516,7 +515,7 @@ export default {
           value: '001',
           label: '医院管理',
           children: [
-            { value: '0011', label: '医生管理', loading: true,disabled: true },
+            { value: '0011', label: '医生管理', loading: false },
             { value: '0012', label: '科室管理' },
             { value: '0013', label: '排班管理' },
           ],
@@ -555,6 +554,29 @@ export default {
     };
   },
   methods: {
+    loadData(item, callback) {
+      const data = item;
+      data.loading = true;
+      setTimeout(() => {
+        data.children = [
+          {
+            value: 'asdad',
+            label: '阿斯顿',
+            disabled: true,
+          },
+          {
+            value: 'asdad',
+            label: '阿斯顿',
+          },
+          {
+            value: 'asdad',
+            label: '阿斯顿',
+          },
+        ];
+        data.loading = false;
+        callback(data.children);
+      }, 1000);
+    },
     checkChange(value) {
       if (value.length === this.checkOptions.length) {
         this.halfCheck = false;
